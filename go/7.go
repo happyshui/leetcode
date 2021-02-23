@@ -1,11 +1,4 @@
-package main
-
-import "fmt"
-
-func main() {
-	num := -123
-	fmt.Println(reverse(num))
-}
+package leetcode
 
 func reverse(x int) int {
 	tmp := 0

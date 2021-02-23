@@ -22,3 +22,26 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return norepeat
 }
+
+// sliding window algorithm
+func lengthOfLongestSubstring(s string) int {
+	length := len(s)
+	var norepeat int
+	smap := make(map[byte]int)
+	right, norepeat := -1, 0
+	for i := 0; i < length; i++ {
+		var cur int
+		if i != 0 {
+			delete(smap, s[i-1])
+		}
+		for right+1 < length && smap[s[right+1]] == 0 {
+			smap[s[right+1]]++
+			right++
+		}
+		cur = right - i + 1
+		if cur > norepeat {
+			norepeat = cur
+		}
+	}
+	return norepeat
+}
