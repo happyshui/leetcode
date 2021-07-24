@@ -22,3 +22,24 @@ func isprime(num int) bool {
 	}
 	return true
 }
+
+// 2. 数学方法
+func countPrimes(n int) int {
+    res := 0
+    if n < 2 {
+        return res
+    }
+    isprime := make([]bool, n)
+    for i := range isprime {
+        isprime[i] = true
+    }
+    for i := 2; i < n; i++ {
+        if isprime[i] {
+            res++
+            for j := 2*i; j < n; j = j+i {
+                isprime[j] = false
+            }
+        }
+    }
+    return res
+}
